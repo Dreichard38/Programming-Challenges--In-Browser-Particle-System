@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+		<title>In-Browser Particle System</title>
+		<!-- Link to include bootstrap, since css is hard -->
+      <link rel="stylesheet" 
+				href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+				integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+				crossorigin="anonymous"
+		>
+		<!-- Link to custom.css -->
+      <link rel="stylesheet" href="custom.css" />
+		<!-- Link to ParticleSystem.js, which defines the particle system used to populate the canvas -->
+		<script src="ParticleSystem.js"></script>
+	</head>
+	<!-- Body calls the onInit() function in ParticleSystem.js when the DOM finishes loading -->
+	<body onLoad='onInit()'>
+		<div class="jumbotron text-center">
+		  <h1>In-Browser Particle System</h1>
+		  <p>By David Reichard</p>
+		</div>
+		<div class="canvasContainer">
+			<canvas id="particleCanvas" width=800px height=600px></canvas>
+		</div>
+		<div class="board-row">
+				<!-- Each of these buttons calls the onChangeType() function with the name of the class of Element they start spawning -->
+				<input type="button" value="Snow" class="btn btn-large" onclick="onChangeType(Snow)" />
+				<input type="button" value="Rain" class="btn btn-large" onclick="onChangeType(Rain)" />
+				<input type="button" value="Bugs" class="btn btn-large" onclick="onChangeType(Bug)" />
+				<!-- This button toggles whether the simulation is paused or not -->
+				<input type="button" value="Pause" id='pause' class="btn btn-large" onclick="onPauseChange()" />
+		</div>
+		<!-- This is a hidden img tag, used by Bug to get the image to display in the canvas -->
+		<img id="bug" src="bug.png">
+	</body>
+</html>
